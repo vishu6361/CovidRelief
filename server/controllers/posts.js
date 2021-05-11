@@ -1,4 +1,5 @@
 import axios from 'axios';
+import SignUp from '../models/SignUp.js';
 
 var config = {
   method: 'get',
@@ -19,5 +20,17 @@ export const home = async (req, res) => {
         });
     } catch (error) {
         res.status(404).json({message: error.message});
+    }
+}
+
+export const createUser = (req, res) => {
+    const user = req.body;
+    
+    const newUser = new SignUp(user);
+    try {
+        newUser.save();
+        res.json(newUser);
+    } catch (error) {
+        res.json({message: error.message})
     }
 }

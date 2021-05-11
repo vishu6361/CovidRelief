@@ -6,7 +6,11 @@ const Data = () => {
     console.log(data[0]);
     const item = data.map(i => i.state);
     return (
-        <div>{item}</div>
+        <ul>
+            {data.map(i => (
+                <li>{i.state}</li>
+            ))}
+        </ul>
     )
 }
 
